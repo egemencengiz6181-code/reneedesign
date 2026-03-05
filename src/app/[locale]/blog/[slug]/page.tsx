@@ -61,7 +61,7 @@ export default async function BlogPostPage({
   if (!post || !post.published) notFound();
 
   const related = allPosts
-    .filter((p) => p.slug !== slug)
+    .filter((p: { slug: string }) => p.slug !== slug)
     .slice(0, 3);
 
   return (
