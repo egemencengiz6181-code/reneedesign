@@ -1,15 +1,12 @@
 import type { Metadata } from 'next';
-import dynamic from 'next/dynamic';
 import HeroMain from '@/components/ui/hero-main';
+import ServicesGrid from '@/components/sections/ServicesGrid';
+import TestimonialsSection from '@/components/sections/Testimonials';
+import LetsWorkSection from '@/components/ui/lets-work-section';
+import SectionWithMockup from '@/components/ui/section-with-mockup';
+import ShimmerText from '@/components/ui/shimmer-text';
 import { getTranslations } from 'next-intl/server';
 import Link from 'next/link';
-
-// Sayfa yüklenince hemen görünmeyen ağır bileşenler lazy load edildi
-const ServicesGrid = dynamic(() => import('@/components/sections/ServicesGrid'), { ssr: true });
-const TestimonialsSection = dynamic(() => import('@/components/sections/Testimonials'), { ssr: false });
-const LetsWorkSection = dynamic(() => import('@/components/ui/lets-work-section'), { ssr: false });
-const SectionWithMockup = dynamic(() => import('@/components/ui/section-with-mockup'), { ssr: false });
-const ShimmerText = dynamic(() => import('@/components/ui/shimmer-text'), { ssr: false });
 
 export async function generateMetadata({
   params,
