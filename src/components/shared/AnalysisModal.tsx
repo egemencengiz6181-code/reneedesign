@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { createPortal } from "react-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { useTranslations } from "next-intl";
 import { X, ArrowRight, ArrowLeft, CheckCircle2, Building2, Lightbulb, Send, Loader2 } from "lucide-react";
@@ -43,7 +44,7 @@ function Overlay({ onClose }: { onClose: () => void }) {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="fixed inset-0 bg-black/70 backdrop-blur-sm z-[100]"
+      className="fixed inset-0 bg-black/70 backdrop-blur-sm z-[200]"
       onClick={onClose}
     />
   );
@@ -171,19 +172,23 @@ export default function AnalysisModal() {
         {at('button')}
       </GradientButton>
 
-      <AnimatePresence>
-        {open && (
-          <>
-            <Overlay onClose={handleClose} />
+      {/* Portal: modal always renders on document.body so it escapes any
+          parent display:none (e.g. the desktop-only Navbar wrapper) */}
+      {typeof document !== "undefined" &&
+        createPortal(
+          <AnimatePresence>
+            {open && (
+              <>
+                <Overlay onClose={handleClose} />
 
-            <motion.div
-              initial={{ opacity: 0, scale: 0.94, y: 20 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.94, y: 20 }}
-              transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-              className="fixed inset-0 flex items-center justify-center z-[101] p-4"
-              onClick={handleClose}
-            >
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.94, y: 20 }}
+                  animate={{ opacity: 1, scale: 1, y: 0 }}
+                  exit={{ opacity: 0, scale: 0.94, y: 20 }}
+                  transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+                  className="fixed inset-0 flex items-center justify-center z-[201] p-4"
+                  onClick={handleClose}
+                >
               <div
                 className="relative w-full max-w-lg bg-white dark:bg-[#0a0514] border border-[#ec2027]/20 rounded-3xl shadow-[0_0_80px_rgba(236,32,39,0.2)] overflow-hidden"
                 onClick={(e) => e.stopPropagation()}
@@ -367,7 +372,9 @@ export default function AnalysisModal() {
             </motion.div>
           </>
         )}
-      </AnimatePresence>
+      </AnimatePresence>,
+          document.body,
+        )}
     </>
   );
 }
