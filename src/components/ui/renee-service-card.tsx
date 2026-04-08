@@ -2,8 +2,7 @@
 
 import React, { useState, useCallback } from 'react';
 import { motion } from 'framer-motion';
-import { cn } from '@/lib/utils';
-import { LucideIcon, ArrowRight, BookOpen, GraduationCap, Trophy, FileText } from 'lucide-react';
+import { type LucideIcon, ArrowRight, BookOpen, GraduationCap, Trophy, FileText } from 'lucide-react';
 import { Link } from '@/navigation';
 
 const SLUG_ICONS: Record<string, LucideIcon> = {

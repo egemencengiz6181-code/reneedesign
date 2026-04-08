@@ -1,7 +1,7 @@
 "use client";
 
 import { ThemeProvider } from "next-themes";
-import { NextIntlClientProvider } from "next-intl";
+import { NextIntlClientProvider, type AbstractIntlMessages } from "next-intl";
 
 export default function Providers({
   children,
@@ -10,7 +10,7 @@ export default function Providers({
 }: {
   children: React.ReactNode;
   locale: string;
-  messages: Record<string, unknown>;
+  messages: AbstractIntlMessages;
 }) {
   return (
     <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false}>
