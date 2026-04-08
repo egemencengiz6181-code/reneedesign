@@ -12,18 +12,13 @@ export interface TestimonialItem {
   text: string;
 }
 
-interface TestimonialsSectionProps {
-  items: TestimonialItem[];
-  subtitle: string;
-  title: string;
-}
-
-const LetsWorkSection = dynamic(() => import('@/components/ui/lets-work-section'), {
-  ssr: false,
-});
-const TestimonialsSection = dynamic<TestimonialsSectionProps>(
+const LetsWorkSection = dynamic(
+  () => import('@/components/ui/lets-work-section'),
+  { ssr: false, loading: () => null },
+);
+const TestimonialsSection = dynamic(
   () => import('@/components/sections/Testimonials'),
-  { ssr: false },
+  { ssr: false, loading: () => null },
 );
 
 const successStories = [

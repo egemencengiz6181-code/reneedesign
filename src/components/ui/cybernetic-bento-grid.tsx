@@ -4,7 +4,7 @@ import { useRef } from "react";
 import Image from "next/image";
 import { Link } from "@/navigation";
 import { works, getLocalizedWork, Work, WorkI18n } from "@/config/works";
-import { ArrowUpRight, ExternalLink } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import { useTranslations, useLocale } from "next-intl";
 
 // Bento layout: 4-col grid, explicit positioning for each card
@@ -192,13 +192,7 @@ export default function CyberneticBentoGrid() {
               </span>
             </h2>
           </div>
-          <Link
-            href={"/references" as any}
-            className="hidden md:inline-flex items-center gap-2 px-6 py-3 rounded-full border border-white/10 text-white/50 hover:text-white hover:border-[#ec2027]/50 text-sm font-semibold transition-all group"
-          >
-            {t("view_all")}
-            <ExternalLink className="w-4 h-4 group-hover:text-[#ec2027]" />
-          </Link>
+
         </div>
 
         {/* Bento Grid */}

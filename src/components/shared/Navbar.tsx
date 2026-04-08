@@ -3,7 +3,7 @@
 import React, { useEffect, useState, useRef } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { Link, usePathname } from "@/navigation"
-import { LucideIcon, ChevronDown, GraduationCap, BookOpen, Users, FileText, Menu, X, Trophy } from "lucide-react"
+import { LucideIcon, ChevronDown, GraduationCap, BookOpen, Users, FileText, Menu, X, Trophy, Award } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { useTranslations } from 'next-intl'
 import LanguageSwitcher from "./LanguageSwitcher"
@@ -51,7 +51,7 @@ export default function Navbar() {
     { name: t('about'), url: "/about", icon: BookOpen },
     { name: t('services'), url: "/services", icon: ChevronDown, hasMegaMenu: true },
     { name: t('guidance'), url: "/rehberlik", icon: Users },
-    { name: t('references'), url: "/references", icon: BookOpen },
+    { name: t('references'), url: "/references", icon: Award },
     { name: t('contact'), url: "/contact", icon: BookOpen },
   ]
 
