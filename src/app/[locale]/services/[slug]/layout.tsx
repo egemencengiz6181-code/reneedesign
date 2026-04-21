@@ -3,14 +3,14 @@ import { getTranslations } from 'next-intl/server';
 
 // Valid service slugs that match messages keys
 const validSlugs = [
-  '7-sinif',
-  '8-sinif',
-  '10-sinif',
-  '11-sinif',
-  '12-sinif',
-  'mezun',
-  'acik-lise',
-  'deneme-kulubu',
+  'seo',
+  'google-ads',
+  'meta-ads',
+  'web-design',
+  'social-media',
+  'production',
+  'design',
+  'pr',
 ] as const;
 
 type ServiceSlug = (typeof validSlugs)[number];
@@ -25,7 +25,7 @@ export async function generateMetadata({
   params: Promise<{ locale: string; slug: string }>;
 }): Promise<Metadata> {
   const { locale, slug } = await params;
-  const origin = 'https://www.zekeriyakoyfenbilimleri.com';
+  const origin = 'https://www.reneedesignlab.com';
   const path = `${origin}/${locale}/services/${slug}`;
 
   if (!isValidSlug(slug)) {

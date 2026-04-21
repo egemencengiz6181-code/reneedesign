@@ -180,9 +180,9 @@ export default function WorkDetailPage({
       {/* ── Brand Story ────────────────────────────────────────────────────── */}
       <section className="py-24">
         <div className="max-w-7xl mx-auto px-6 md:px-12">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-start">
             {/* Story text */}
-            <div className="space-y-16 order-2 lg:order-1 lg:sticky lg:top-28 lg:self-start">
+            <div className="space-y-16 sticky top-28 self-start">
               {[
                 { label: t("challenge"), text: work.story.challenge },
                 { label: t("approach"), text: work.story.approach },
@@ -213,7 +213,7 @@ export default function WorkDetailPage({
             </div>
 
             {/* Gallery */}
-            <div className="space-y-5 order-1 lg:order-2">
+            <div className="space-y-5">
               {work.galleryImages.map((img, i) => (
                 <ParallaxImage key={i} src={img} alt={`${work.brand} ${i + 1}`} index={i} />
               ))}

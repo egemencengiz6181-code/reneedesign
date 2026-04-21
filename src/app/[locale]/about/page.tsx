@@ -33,10 +33,11 @@ export default function AboutPage() {
       {/* Soluk Arka Plan Mührü */}
       <div className="fixed top-[15%] right-[-250px] w-[900px] h-[900px] opacity-[0.05] rotate-12 pointer-events-none z-0">
         <Image 
-          src="/logos/Fen%20bilimleri%20logo.png" 
+          src="/logos/Main_Simge_Beyaz.png" 
           alt="" 
           fill 
           className="object-contain"
+          priority
         />
       </div>
 
@@ -60,13 +61,13 @@ export default function AboutPage() {
             transition={{ delay: 0.5 }}
             className="text-primary-light tracking-[0.3em] uppercase text-xs mb-6 block font-medium"
           >
-            Zekeriyaköy Nazmi Arıkan Fen Bilimleri
+            Renee DesignLab
           </motion.span>
           <motion.h1 
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1.2, ease: "easeOut" }}
-            className="text-4xl md:text-7xl lg:text-8xl font-bold tracking-tighter bg-gradient-to-b from-slate-900 via-slate-900 to-primary/20 dark:from-white dark:via-white dark:to-primary/20 bg-clip-text text-transparent leading-tight"
+            className="text-4xl md:text-7xl lg:text-8xl font-bold tracking-tighter bg-gradient-to-b from-white via-white to-primary/20 bg-clip-text text-transparent leading-tight"
           >
             {t('hero_slogan')}
           </motion.h1>
@@ -109,7 +110,7 @@ export default function AboutPage() {
               className="group relative"
             >
               <div className={`absolute -inset-10 bg-gradient-to-b ${item.color} to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 blur-3xl -z-10`} />
-              <span className="text-6xl font-black text-black/5 dark:text-white/5 absolute -top-10 -left-6 select-none group-hover:text-primary/10 transition-colors">0{i+1}</span>
+              <span className="text-6xl font-black text-white/5 absolute -top-10 -left-6 select-none group-hover:text-primary/10 transition-colors">0{i+1}</span>
               <h4 className="text-3xl font-bold mb-6 group-hover:text-primary-light transition-colors">{t(`${item.key}.title`)}</h4>
               <p className="text-lg text-foreground/40 font-light leading-relaxed group-hover:text-foreground/70 transition-colors">
                 {t(`${item.key}.text`)}
@@ -120,12 +121,12 @@ export default function AboutPage() {
 
         {/* Premium Founder Bölümü */}
         <motion.div 
-          className="relative py-32 border-t border-black/5 dark:border-white/5 overflow-hidden group"
+          className="relative py-32 border-t border-white/5 overflow-hidden group"
           variants={fadeInUp}
         >
           {/* Arka plan monogram */}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[20rem] font-black text-black/[0.02] dark:text-white/[0.02] select-none pointer-events-none group-hover:text-primary/[0.03] transition-colors duration-1000">
-            NA
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[20rem] font-black text-white/[0.02] select-none pointer-events-none group-hover:text-primary/[0.03] transition-colors duration-1000">
+            EC
           </div>
           
           <div className="relative flex flex-col items-center text-center">
@@ -134,10 +135,10 @@ export default function AboutPage() {
               whileInView={{ width: "120px" }}
               transition={{ duration: 1.5 }}
             />
-            <h2 className="text-4xl md:text-6xl font-serif italic mb-4 tracking-tight">Nazmi Arıkan</h2>
+            <h2 className="text-4xl md:text-6xl font-serif italic mb-4 tracking-tight">Egemen Cengiz</h2>
             <p className="text-primary-light tracking-[0.5em] uppercase text-xs mb-10 font-bold">{t('founder.role')}</p>
             <p className="max-w-xl text-foreground/40 font-light text-lg leading-relaxed italic">
-              “{t('founder.text')}”
+              "{t('founder.text')}"
             </p>
           </div>
         </motion.div>

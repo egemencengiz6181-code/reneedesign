@@ -2,12 +2,12 @@ import { NextRequest, NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
 
 const transporter = nodemailer.createTransport({
-  host: process.env.SMTP_HOST ?? 'smtp.gmail.com',
-  port: Number(process.env.SMTP_PORT ?? 465),
+  host: 'mail.reneedesignlab.com',
+  port: 465,
   secure: true,
   auth: {
-    user: process.env.SMTP_USER,
-    pass: process.env.SMTP_PASS,
+    user: 'egemen.cengiz@reneedesignlab.com',
+    pass: 'Renee1999**',
   },
 });
 
@@ -49,7 +49,7 @@ export async function POST(req: NextRequest) {
           <p style="background: #1e1033; padding: 16px; border-radius: 8px; color: #f2f2f2; border-left: 3px solid #8b5cf6;">${data.request || '—'}</p>
           
           <hr style="border: none; border-top: 1px solid #2d1b66; margin: 32px 0;" />
-          <p style="color: #4a4a4a; font-size: 12px;">Zekeriyaköy Fen Bilimleri — Ön Görüşme Sistemi</p>
+          <p style="color: #4a4a4a; font-size: 12px;">Renee DesignLab — Analiz Sistemi</p>
         </div>
       `;
     } else {
@@ -66,14 +66,14 @@ export async function POST(req: NextRequest) {
           <h2 style="color: #8b5cf6; font-size: 16px; margin-top: 24px;">Mesaj</h2>
           <p style="background: #1e1033; padding: 16px; border-radius: 8px; color: #f2f2f2; border-left: 3px solid #8b5cf6;">${data.message || '—'}</p>
           <hr style="border: none; border-top: 1px solid #2d1b66; margin: 32px 0;" />
-          <p style="color: #4a4a4a; font-size: 12px;">Zekeriyaköy Fen Bilimleri — İletişim Sistemi</p>
+          <p style="color: #4a4a4a; font-size: 12px;">Renee DesignLab — İletişim Sistemi</p>
         </div>
       `;
     }
 
     await transporter.sendMail({
-      from: '"Zekeriyaköy Fen Bilimleri" <zekeriyakoyfenbilimleri@gmail.com>',
-      to: 'zekeriyakoyfenbilimleri@gmail.com',
+      from: '"Renee DesignLab Web" <egemen.cengiz@reneedesignlab.com>',
+      to: 'egemen.cengiz@reneedesignlab.com',
       subject,
       html,
     });

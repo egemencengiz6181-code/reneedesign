@@ -1,25 +1,25 @@
 import type { MetadataRoute } from 'next';
 import { works } from '@/config/works';
 
-const origin = 'https://www.zekeriyakoyfenbilimleri.com';
-const locales = ['tr'] as const;
+const origin = 'https://www.reneedesignlab.com';
+const locales = ['tr', 'en'] as const;
 
 const serviceSlugs = [
-  '7-sinif',
-  '8-sinif',
-  '10-sinif',
-  '11-sinif',
-  '12-sinif',
-  'mezun',
-  'acik-lise',
-  'deneme-kulubu',
+  'seo',
+  'google-ads',
+  'meta-ads',
+  'web-design',
+  'social-media',
+  'production',
+  'design',
+  'pr',
 ] as const;
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const now = new Date();
 
   // ── Static routes ────────────────────────────────────────────────────────────
-  const staticPaths = ['', '/about', '/services', '/rehberlik', '/references', '/contact'];
+  const staticPaths = ['', '/about', '/services', '/references', '/contact'];
 
   const staticEntries: MetadataRoute.Sitemap = staticPaths.flatMap((path) =>
     locales.map((locale) => ({

@@ -8,7 +8,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: 'Services' });
-  const origin = 'https://www.zekeriyakoyfenbilimleri.com';
+  const origin = 'https://www.reneedesignlab.com';
   const path = `${origin}/${locale}/services`;
 
   return {

@@ -8,7 +8,7 @@ export default function HeroSection() {
   const t = useTranslations('Hero');
 
   const handleCTA = () => {
-    window.open("https://wa.me/902122015848", "_blank");
+    window.open("https://wa.me/905325046606", "_blank");
   };
 
   return (
@@ -50,7 +50,7 @@ export default function HeroSection() {
           transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
           className="text-xl md:text-2xl text-foreground/50 font-light mb-12 max-w-3xl mx-auto leading-relaxed"
         >
-          {t('subtitle', { defaultValue: 'Zekeriyaköy Fen Bilimleri, LGS ve YKS\'de hedef okula giden yolu açar.' })}
+          {t('subtitle', { defaultValue: 'Renee DesignLab, yaratıcı bir laboratuvar titizliğiyle markanızı dijitalin zirvesine taşır.' })}
         </motion.p>
 
         <motion.div

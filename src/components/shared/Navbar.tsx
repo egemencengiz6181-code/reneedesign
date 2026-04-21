@@ -104,8 +104,8 @@ export default function Navbar() {
       <div className="pointer-events-auto w-[200px] md:w-[260px] flex items-center">
         <Link href="/" className="flex items-center">
           <Image 
-                      src="/logos/Fen%20bilimleri%20logo.png" 
-            alt="Zekeriyaköy Fen Bilimleri Dershanesi" 
+                      src="/logos/Main_Logo_Beyaz.png" 
+            alt="Renee DesignLab" 
             width={240} 
             height={72} 
             className="h-[64px] md:h-[80px] w-auto object-contain"
@@ -241,8 +241,8 @@ export default function Navbar() {
           <div className="flex items-center justify-between px-6 py-5 border-b border-black/10 dark:border-white/10">
             <Link href="/" onClick={() => setIsMobileOpen(false)}>
               <Image
-                src="/logos/Fen%20bilimleri%20logo.png"
-                alt="Zekeriyaköy Fen Bilimleri Dershanesi"
+                src="/logos/Main_Logo_Beyaz.png"
+                alt="Renee DesignLab"
                 width={200}
                 height={60}
                 className="h-[56px] w-auto object-contain"

@@ -4,7 +4,8 @@ import { useTranslations } from 'next-intl';
 import { motion, useMotionValue, useSpring } from 'framer-motion';
 import { Link } from '@/navigation';
 import { 
-  BookOpen, GraduationCap, Trophy, FileText, Users
+  Search, Target, Share2, Code, 
+  Globe, Camera, Palette, Megaphone 
 } from 'lucide-react';
 import React from 'react';
 
@@ -49,12 +50,12 @@ const ServiceCard = ({ slug, icon: Icon, span = "col-span-1" }: { slug: string, 
       className={`${span} group relative`}
     >
       <Link href={`/services/${slug}`} className="block h-full">
-          <div className="relative h-full p-8 rounded-[32px] bg-black/[0.02] dark:bg-white/[0.02] backdrop-blur-xl border border-black/5 dark:border-white/5 overflow-hidden transition-all duration-500 hover:border-primary/30">
+        <div className="relative h-full p-8 rounded-[32px] bg-white/[0.02] backdrop-blur-xl border border-white/5 overflow-hidden transition-all duration-500 hover:border-primary/30">
           {/* Aurora Glow sızıntısı */}
           <div className="absolute -inset-20 bg-primary/20 blur-[80px] rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none -z-10" />
           
           <div className="relative z-10 h-full flex flex-col">
-            <div className="w-14 h-14 rounded-2xl bg-black/5 dark:bg-white/5 flex items-center justify-center mb-8 group-hover:bg-primary/20 transition-colors duration-500">
+            <div className="w-14 h-14 rounded-2xl bg-white/5 flex items-center justify-center mb-8 group-hover:bg-primary/20 transition-colors duration-500">
               <Icon className="w-7 h-7 text-primary-light" />
             </div>
             
@@ -113,32 +114,32 @@ export default function ServicesPage() {
           </motion.p>
         </div>
 
-        {/* Ortaokul Programı */}
+        {/* Strateji Bölümü */}
         <section className="mb-32">
-          <SectionHeader title={t('sections.ortaokul')} />
+          <SectionHeader title={t('sections.strategy')} />
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <ServiceCard slug="7-sinif" icon={BookOpen} span="md:col-span-1" />
-            <ServiceCard slug="8-sinif" icon={GraduationCap} span="md:col-span-2" />
+            <ServiceCard slug="seo" icon={Search} span="md:col-span-1" />
+            <ServiceCard slug="pr" icon={Megaphone} span="md:col-span-2" />
           </div>
         </section>
 
-        {/* Lise Programı */}
+        {/* Tasarım Bölümü */}
         <section className="mb-32">
-          <SectionHeader title={t('sections.lise')} />
+          <SectionHeader title={t('sections.design')} />
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <ServiceCard slug="10-sinif" icon={BookOpen} span="md:col-span-1" />
-            <ServiceCard slug="11-sinif" icon={FileText} span="md:col-span-1" />
-            <ServiceCard slug="12-sinif" icon={Trophy} span="md:col-span-1" />
-            <ServiceCard slug="mezun" icon={GraduationCap} span="md:col-span-2" />
-            <ServiceCard slug="acik-lise" icon={BookOpen} span="md:col-span-1" />
+            <ServiceCard slug="web-design" icon={Code} span="md:col-span-2" />
+            <ServiceCard slug="design" icon={Palette} span="md:col-span-1" />
+            <ServiceCard slug="production" icon={Camera} span="md:col-span-3" />
           </div>
         </section>
 
-        {/* Destek & Analiz */}
+        {/* Performans Bölümü */}
         <section>
-          <SectionHeader title={t('sections.destek')} />
+          <SectionHeader title={t('sections.performance')} />
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <ServiceCard slug="deneme-kulubu" icon={FileText} span="md:col-span-3" />
+            <ServiceCard slug="google-ads" icon={Target} span="md:col-span-1" />
+            <ServiceCard slug="meta-ads" icon={Share2} span="md:col-span-1" />
+            <ServiceCard slug="social-media" icon={Globe} span="md:col-span-1" />
           </div>
         </section>
       </div>

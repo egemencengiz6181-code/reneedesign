@@ -1,32 +1,32 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://www.zekeriyakoyfenbilimleri.com'),
+  metadataBase: new URL('https://www.reneedesignlab.com'),
   title: {
-    default: 'Zekeriyaköy Fen Bilimleri',
-    template: '%s | Zekeriyaköy Fen Bilimleri',
+    default: 'Renee DesignLab',
+    template: '%s | Renee DesignLab',
   },
-  description: "Sarıyer — Zekeriyaköy Nazmi Arıkan Fen Bilimleri Dershanesi. LGS ve YKS'de hedef okula giden yol.",
-  authors: [{ name: 'Zekeriyaköy Fen Bilimleri', url: 'https://www.zekeriyakoyfenbilimleri.com' }],
-  creator: 'Zekeriyaköy Fen Bilimleri',
-  publisher: 'Zekeriyaköy Fen Bilimleri',
+  description: 'Ankara merkezli dijital tasarım ve reklam ajansı.',
+  authors: [{ name: 'Renee DesignLab', url: 'https://www.reneedesignlab.com' }],
+  creator: 'Renee DesignLab',
+  publisher: 'Renee DesignLab',
   robots: {
     index: true,
     follow: true,
     googleBot: { index: true, follow: true },
   },
   icons: {
-    icon: '/logos/Fen%20bilimleri%20logo.png',
+    icon: '/logos/Main_Simge_Beyaz.png',
   },
   openGraph: {
     type: 'website',
-    siteName: 'Zekeriyaköy Fen Bilimleri',
+    siteName: 'Renee DesignLab',
     locale: 'tr_TR',
   },
   twitter: {
     card: 'summary_large_image',
-    site: '@zekeriyakoyfenbilimleri',
-    creator: '@zekeriyakoyfenbilimleri',
+    site: '@reneedesignlab',
+    creator: '@reneedesignlab',
   },
 };
 

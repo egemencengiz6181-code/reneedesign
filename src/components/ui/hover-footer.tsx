@@ -3,7 +3,7 @@
 import { useRef, useEffect, useState } from "react";
 import Image from "next/image";
 import { Link } from "@/navigation";
-import { Instagram, Mail, MapPin, Phone, ExternalLink } from "lucide-react";
+import { Instagram, Linkedin, Mail, MapPin, Phone, ExternalLink } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { motion } from "framer-motion";
 
@@ -35,18 +35,18 @@ function TextHoverEffect({ text }: { text: string }) {
       className="select-none cursor-default"
     >
       <defs>
-        {/* Base gradient */}
+        {/* Base gradient — dark violet outline */}
         <linearGradient id="footer-text-grad-base" x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%" stopColor="#7a1010" />
-          <stop offset="50%" stopColor="#ec2027" />
-          <stop offset="100%" stopColor="#7a1010" />
+          <stop offset="0%" stopColor="#4c1d95" />
+          <stop offset="50%" stopColor="#6d28d9" />
+          <stop offset="100%" stopColor="#4c1d95" />
         </linearGradient>
 
-        {/* Hover gradient */}
+        {/* Hover gradient — bright violet-indigo */}
         <linearGradient id="footer-text-grad-hover" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stopColor="#ec2027" />
-          <stop offset="40%" stopColor="#f06060" />
-          <stop offset="100%" stopColor="#12648f" />
+          <stop offset="0%" stopColor="#8b5cf6" />
+          <stop offset="40%" stopColor="#a78bfa" />
+          <stop offset="100%" stopColor="#6366f1" />
         </linearGradient>
 
         {/* Radial mask for hover reveal */}
@@ -115,31 +115,32 @@ export default function HoverFooter() {
   ];
 
   const socialLinks = [
-    { icon: <Instagram className="w-4 h-4" />, href: "https://www.instagram.com/zekeriyakoyfenbilimleri", label: "Instagram" },
+    { icon: <Instagram className="w-4 h-4" />, href: "https://www.instagram.com/reneedesignlab/", label: "Instagram" },
+    { icon: <Linkedin className="w-4 h-4" />, href: "https://www.linkedin.com/in/egemen-cengiz-826158282/", label: "LinkedIn" },
   ];
 
   return (
-    <footer className="relative overflow-hidden border-t border-black/5 dark:border-white/5 bg-transparent">
+    <footer className="relative overflow-hidden border-t border-white/5 bg-transparent">
       {/* Ambient background */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[900px] h-[400px] bg-[#ec2027]/10 blur-[120px] rounded-full" />
+        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[900px] h-[400px] bg-violet-900/10 blur-[120px] rounded-full" />
       </div>
 
       <div className="relative max-w-7xl mx-auto px-6 pt-20 pb-8">
         {/* Top grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 pb-16 border-b border-black/5 dark:border-white/5">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 pb-16 border-b border-white/5">
           {/* Brand */}
           <div className="space-y-6">
             <Link href="/" className="inline-block pointer-events-auto">
               <Image
-                src="/logos/Fen%20bilimleri%20logo.png"
-                alt="Zekeriyaköy Fen Bilimleri Dershanesi"
+                src="/logos/Main_Logo_Beyaz.png"
+                alt="Renee DesignLab"
                 width={180}
                 height={60}
                 className="h-16 w-auto object-contain"
               />
             </Link>
-            <p className="text-sm text-slate-500 dark:text-white/30 leading-relaxed max-w-xs">
+            <p className="text-sm text-white/30 leading-relaxed max-w-xs">
               {ft('brand_tagline')}
             </p>
             <div className="flex gap-3">
@@ -150,7 +151,7 @@ export default function HoverFooter() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={s.label}
-                  className="w-9 h-9 rounded-full border border-black/8 dark:border-white/8 bg-black/[0.03] dark:bg-white/[0.03] flex items-center justify-center text-slate-400 dark:text-white/30 hover:text-[#ec2027] hover:border-[#ec2027]/40 transition-all pointer-events-auto"
+                  className="w-9 h-9 rounded-full border border-white/8 bg-white/[0.03] flex items-center justify-center text-white/30 hover:text-violet-400 hover:border-violet-500/40 transition-all pointer-events-auto"
                 >
                   {s.icon}
                 </a>
@@ -160,15 +161,15 @@ export default function HoverFooter() {
 
           {/* Nav */}
           <div className="space-y-6">
-            <p className="text-xs font-bold uppercase tracking-[0.25em] text-slate-400 dark:text-white/25">{ft('pages')}</p>
+            <p className="text-xs font-bold uppercase tracking-[0.25em] text-white/25">{ft('pages')}</p>
             <ul className="space-y-3">
               {navLinks.map((l) => (
                 <li key={l.href}>
                   <Link
                     href={l.href}
-                    className="text-sm text-slate-500 dark:text-white/40 hover:text-slate-900 dark:hover:text-white transition-colors flex items-center gap-1.5 group pointer-events-auto"
+                    className="text-sm text-white/40 hover:text-white transition-colors flex items-center gap-1.5 group pointer-events-auto"
                   >
-                    <ExternalLink className="w-3 h-3 opacity-0 group-hover:opacity-100 text-[#ec2027] transition-opacity" />
+                    <ExternalLink className="w-3 h-3 opacity-0 group-hover:opacity-100 text-violet-400 transition-opacity" />
                     {l.name}
                   </Link>
                 </li>
@@ -178,22 +179,22 @@ export default function HoverFooter() {
 
           {/* Contact */}
           <div className="space-y-6">
-            <p className="text-xs font-bold uppercase tracking-[0.25em] text-slate-400 dark:text-white/25">{ft('contact')}</p>
+            <p className="text-xs font-bold uppercase tracking-[0.25em] text-white/25">{ft('contact')}</p>
             <ul className="space-y-4">
               <li>
-                <a href="mailto:zekeriyakoyfenbilimleri@gmail.com" className="flex items-center gap-3 text-sm text-slate-500 dark:text-white/40 hover:text-slate-900 dark:hover:text-white transition-colors group pointer-events-auto">
-                  <Mail className="w-4 h-4 text-[#ec2027] shrink-0" />
-                  zekeriyakoyfenbilimleri@gmail.com
+                <a href="mailto:info@reneedesignlab.com" className="flex items-center gap-3 text-sm text-white/40 hover:text-white transition-colors group pointer-events-auto">
+                  <Mail className="w-4 h-4 text-violet-500 shrink-0" />
+                  info@reneedesignlab.com
                 </a>
               </li>
               <li>
-                <a href="tel:+902122015848" className="flex items-center gap-3 text-sm text-slate-500 dark:text-white/40 hover:text-slate-900 dark:hover:text-white transition-colors pointer-events-auto">
-                  <Phone className="w-4 h-4 text-[#ec2027] shrink-0" />
-                  0212 201 58 48
+                <a href="tel:+905325046606" className="flex items-center gap-3 text-sm text-white/40 hover:text-white transition-colors pointer-events-auto">
+                  <Phone className="w-4 h-4 text-violet-500 shrink-0" />
+                  0532 504 66 06
                 </a>
               </li>
-              <li className="flex items-start gap-3 text-sm text-slate-500 dark:text-white/40">
-                <MapPin className="w-4 h-4 text-[#ec2027] shrink-0 mt-0.5" />
+              <li className="flex items-start gap-3 text-sm text-white/40">
+                <MapPin className="w-4 h-4 text-violet-500 shrink-0 mt-0.5" />
                 <span>{ft('address')}</span>
               </li>
             </ul>
@@ -202,15 +203,15 @@ export default function HoverFooter() {
 
         {/* TextHoverEffect */}
         <div className="py-8 -mx-6 px-6 overflow-hidden">
-          <TextHoverEffect text="FEN BİLİMLERİ" />
+          <TextHoverEffect text="RENEE DESIGNLAB" />
         </div>
 
         {/* Bottom bar */}
-        <div className="pt-6 border-t border-black/5 dark:border-white/5 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-xs text-slate-400 dark:text-white/20">
-            © {new Date().getFullYear()} Zekeriyaköy Fen Bilimleri. {ft('rights_suffix')}
+        <div className="pt-6 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <p className="text-xs text-white/20">
+            © {new Date().getFullYear()} Renee DesignLab. {ft('rights_suffix')}
           </p>
-          <p className="text-xs text-slate-400 dark:text-white/20">
+          <p className="text-xs text-white/20">
             {ft('tagline')}
           </p>
         </div>

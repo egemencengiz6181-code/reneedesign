@@ -1,19 +1,11 @@
 import type { Metadata } from 'next';
+import {NextIntlClientProvider} from 'next-intl';
 import {getMessages, getTranslations} from 'next-intl/server';
 import Navbar from '@/components/shared/Navbar';
 import Footer from '@/components/shared/Footer';
-import MobileStickyButton from '@/components/shared/MobileStickyButton';
-import Providers from './providers';
-import {locales} from '@/config/locales';
+import {locales} from '@/navigation';
 import Image from 'next/image';
-import { Inter } from 'next/font/google';
 import '../globals.css';
-
-const inter = Inter({
-  subsets: ['latin'],
-  display: 'swap',
-  variable: '--font-inter',
-});
 
 export function generateStaticParams() {
   return locales.map((locale) => ({locale}));
@@ -27,18 +19,24 @@ export async function generateMetadata({
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: 'Index' });
 
-  const origin = 'https://www.zekeriyakoyfenbilimleri.com';
+  const origin = 'https://www.reneedesignlab.com';
+  const alternateLocale = locale === 'tr' ? 'en' : 'tr';
 
   return {
     title: t('title'),
     description: t('description'),
     alternates: {
       canonical: `${origin}/${locale}`,
+      languages: {
+        tr: `${origin}/tr`,
+        en: `${origin}/en`,
+      },
     },
     openGraph: {
       type: 'website',
-      locale: 'tr_TR',
-      siteName: 'Zekeriyaköy Fen Bilimleri',
+      locale: locale === 'en' ? 'en_US' : 'tr_TR',
+      alternateLocale: alternateLocale === 'en' ? 'en_US' : 'tr_TR',
+      siteName: 'Renee DesignLab',
       title: t('title'),
       description: t('description'),
       url: `${origin}/${locale}`,
@@ -62,31 +60,26 @@ export default async function LocaleLayout({
   const messages = await getMessages();
 
   return (
-    <html lang={locale} className={inter.variable} suppressHydrationWarning>
-      <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-      </head>
-      <body className="bg-background text-foreground antialiased selection:bg-primary/30 min-h-screen relative font-sans" suppressHydrationWarning>
+    <html lang={locale} className="dark">
+      <body className="bg-background text-foreground antialiased selection:bg-primary/30 min-h-screen relative">
         {/* Arka Plan İkonu (Global Mühür) */}
         <div className="fixed top-[15%] right-[-250px] w-[900px] h-[900px] opacity-[0.08] rotate-12 pointer-events-none z-0">
           <Image 
-            src="/logos/Fen%20bilimleri%20logo.png" 
+            src="/logos/Main_Simge_Beyaz.png" 
             alt="" 
             fill 
             className="object-contain"
-            loading="lazy"
+            priority
           />
         </div>
 
-        <Providers locale={locale} messages={messages ?? {}}>
-            <Navbar />
-            <main className="relative z-10 pb-20 md:pb-0">
-              {children}
-            </main>
-            <Footer />
-            {/* Mobil sticky buton — her sayfada görünür, layout seviyesinde */}
-            <MobileStickyButton />
-        </Providers>
+        <NextIntlClientProvider locale={locale} messages={messages}>
+          <Navbar />
+          <main className="relative z-10">
+            {children}
+          </main>
+          <Footer />
+        </NextIntlClientProvider>
       </body>
     </html>
   );

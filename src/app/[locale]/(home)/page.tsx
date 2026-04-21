@@ -1,14 +1,13 @@
 import type { Metadata } from 'next';
 import HeroMain from '@/components/ui/hero-main';
 import ServicesGrid from '@/components/sections/ServicesGrid';
+import LogoMarquee from '@/components/sections/LogoMarquee';
+import TestimonialsSection from '@/components/sections/Testimonials';
+import DisplayCards from '@/components/ui/display-cards';
+import LetsWorkSection from '@/components/ui/lets-work-section';
+import WorksShowcase from '@/components/ui/works-showcase';
 import { getTranslations } from 'next-intl/server';
-import Link from 'next/link';
-import dynamic from 'next/dynamic';
-
-const TestimonialsSection = dynamic(() => import('@/components/sections/Testimonials'));
-const LetsWorkSection = dynamic(() => import('@/components/ui/lets-work-section'));
-const SectionWithMockup = dynamic(() => import('@/components/ui/section-with-mockup'));
-const ShimmerText = dynamic(() => import('@/components/ui/shimmer-text'));
+import { Link } from '@/navigation';
 
 export async function generateMetadata({
   params,
@@ -17,7 +16,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: 'Index' });
-  const origin = 'https://www.zekeriyakoyfenbilimleri.com';
+  const origin = 'https://www.reneedesignlab.com';
   return {
     title: t('title'),
     description: t('description'),
@@ -51,42 +50,32 @@ export default async function IndexPage({
       <div className="relative z-10">
         <HeroMain />
         <ServicesGrid />
-
-        {/* Neden Biz */}
+        <WorksShowcase />
+        <LogoMarquee />
+        
         <section className="py-32 relative overflow-hidden">
-          {/* Watermark arka plan yazısı */}
-          <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-0 overflow-hidden">
-            <ShimmerText className="text-[clamp(4rem,14vw,11rem)] font-black tracking-tighter leading-none uppercase">
-              KANITLANMIŞ BAŞARI
-            </ShimmerText>
-          </div>
-          <div className="max-w-5xl mx-auto px-6 text-center relative z-10">
-            <h2 className="text-sm font-bold uppercase tracking-[0.3em] text-primary mb-4">{t('title')}</h2>
-            <p className="text-3xl md:text-5xl font-bold tracking-tighter leading-tight text-slate-900 dark:text-white mb-8">
-              {t('description')}
-            </p>
-            <Link 
-              href={`/${locale}/contact`}
-              className="inline-flex items-center px-8 py-4 bg-[#ec2027] hover:bg-[#c8191f] text-white font-medium rounded-full transition-all hover:scale-105 active:scale-95 shadow-[0_0_20px_rgba(236,32,39,0.3)]"
-            >
-              {t('cta')}
-            </Link>
+          <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 items-center gap-20 relative z-10">
+            <div className="order-2 lg:order-1 flex justify-center py-20 lg:py-0">
+              <DisplayCards />
+            </div>
+            <div className="order-1 lg:order-2 space-y-8">
+              <h2 className="text-5xl md:text-6xl font-bold tracking-tighter leading-tight bg-gradient-to-r from-white to-white/40 bg-clip-text text-transparent">
+                {t('title')}
+              </h2>
+              <p className="text-xl text-foreground/50 font-light leading-relaxed max-w-xl">
+                {t('description')}
+              </p>
+              <div className="pt-4">
+                <Link 
+                  href="/contact"
+                  className="inline-flex items-center px-8 py-4 bg-primary hover:bg-primary-light text-white font-medium rounded-full transition-all hover:scale-105 active:scale-95 shadow-[0_0_20px_rgba(109,40,217,0.3)]"
+                >
+                  {t('cta')}
+                </Link>
+              </div>
+            </div>
           </div>
         </section>
-
-        {/* Fen Bilimleri Bölümü */}
-        <SectionWithMockup
-          badge="Fen Bilimleri"
-          title={
-            <>
-              Sağlam Temel,<br />
-              <span className="bg-gradient-to-r from-[#ec2027] via-[#f06060] to-[#fff] bg-clip-text text-transparent">
-                Kanıtlanmış Başarı
-              </span>
-            </>
-          }
-          description="Fen Bilimleri, öğrencilerin lisans eğitimine yönelik temel bilimlerdeki sağlam temellerini atmak ve sınavlarda başarı göstermelerini sağlamak için kritik bir alandır. Dershanemiz bu alanda deneyimli öğretmen kadrosu ve zengin eğitim materyalleriyle öğrencilerin akademik seviyelerini yükseltmeye odaklanır. Sunduğumuz programlar öğrencilerin yalnızca teorik bilgi değil, aynı zamanda pratik becerilerini de geliştirerek sınavlarda yüksek başarı göstermelerini sağlar."
-        />
 
         <TestimonialsSection />
         <LetsWorkSection />

@@ -1,95 +1,71 @@
-import { getTranslations } from 'next-intl/server';
-import ReferencesMarquee from '@/components/sections/ReferencesMarquee';
+'use client';
 
-type Student = {
-  name: string;
-  achievement: string;
-  exam: 'LGS' | 'YKS';
-};
+import { useTranslations } from 'next-intl';
+import { motion } from 'framer-motion';
+import Image from 'next/image';
+import LetsWorkSection from '@/components/ui/lets-work-section';
 
-const students: Student[] = [
-  { name: 'Elif K.', achievement: 'LGS 500 Tam Puan', exam: 'LGS' },
-  { name: 'Kerem A.', achievement: 'YKS TR 154.', exam: 'YKS' },
-  { name: 'Selin T.', achievement: 'LGS 496', exam: 'LGS' },
-  { name: 'Mert Ö.', achievement: 'YKS TR 89.', exam: 'YKS' },
-  { name: 'Zeynep B.', achievement: 'LGS 492', exam: 'LGS' },
-  { name: 'Arda Y.', achievement: 'YKS TR 312.', exam: 'YKS' },
-  { name: 'Melis G.', achievement: 'LGS 488', exam: 'LGS' },
-  { name: 'Can S.', achievement: 'YKS TR 45.', exam: 'YKS' },
-];
+const logoNumbers = Array.from({ length: 34 }, (_, i) => i + 1);
 
-function AchievementCard({ name, achievement, exam }: Student) {
-  const isLGS = exam === 'LGS';
-  return (
-    <div className="group relative rounded-2xl p-px overflow-hidden">
-      {/* Gradient border layer */}
-      <div
-        className={`absolute inset-0 rounded-2xl transition-opacity duration-500 ${
-          isLGS
-            ? 'bg-gradient-to-br from-blue-500/40 via-blue-300/10 to-transparent'
-            : 'bg-gradient-to-br from-primary/50 via-primary/10 to-transparent'
-        }`}
-      />
-      {/* Card body */}
-      <div className="relative rounded-[15px] bg-white dark:bg-neutral-900 px-5 py-8 flex flex-col items-center text-center gap-3 h-full min-h-[170px] justify-center">
-        <span
-          className={`text-[10px] font-black uppercase tracking-[0.25em] px-3 py-1 rounded-full ${
-            isLGS
-              ? 'bg-blue-100 text-blue-700 dark:bg-blue-950/60 dark:text-blue-300'
-              : 'bg-red-100 text-red-700 dark:bg-red-950/60 dark:text-red-300'
-          }`}
-        >
-          {exam}
-        </span>
-        <p className="text-xl md:text-2xl font-black text-foreground leading-tight">
-          {achievement}
-        </p>
-        <p className="text-xs font-semibold text-foreground/40">{name}</p>
-      </div>
-      {/* Hover glow behind card */}
-      <div
-        className={`absolute inset-0 rounded-2xl -z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-700 blur-2xl ${
-          isLGS ? 'bg-blue-400/15' : 'bg-primary/20'
-        }`}
-      />
-    </div>
-  );
-}
-
-export default async function ReferencesPage() {
-  const t = await getTranslations('References');
+export default function ReferencesPage() {
+  const t = useTranslations('References');
 
   return (
-    <main className="min-h-screen bg-background">
-      {/* ── Hero Section ──────────────────────────────────────────────────── */}
-      <section className="pt-36 pb-20 px-6 text-center relative overflow-hidden">
-        <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[400px] bg-primary/5 blur-[140px] rounded-full" />
-        </div>
-        <div className="relative max-w-3xl mx-auto space-y-6">
-          <p className="text-xs font-bold uppercase tracking-[0.3em] text-primary/70">
-            Başarı Hikayeleri
-          </p>
-          <h1 className="text-4xl md:text-6xl font-black text-foreground leading-tight">
+    <div className="min-h-screen pt-40 pb-24 relative overflow-hidden bg-transparent z-10">
+      {/* Arka plan süslemesi */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-6xl h-[600px] bg-primary/5 blur-[120px] rounded-full pointer-events-none -z-10" />
+
+      <div className="max-w-7xl mx-auto px-6 relative z-10">
+        <div className="text-center mb-24">
+          <motion.h1
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-b from-white to-white/40 bg-clip-text text-transparent"
+          >
             {t('title')}
-          </h1>
-          <p className="text-lg text-foreground/50 max-w-xl mx-auto leading-relaxed">
+          </motion.h1>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.1 }}
+            className="text-xl text-foreground/40 max-w-2xl mx-auto font-light"
+          >
             {t('subtitle')}
-          </p>
+          </motion.p>
         </div>
-      </section>
 
-      {/* ── Student Cards Grid ─────────────────────────────────────────────── */}
-      <section className="pb-28 px-6">
-        <div className="max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
-          {students.map((student) => (
-            <AchievementCard key={student.name} {...student} />
+        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6 items-center mb-32">
+          {logoNumbers.map((num) => (
+            <motion.div
+              key={num}
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: (num % 10) * 0.05 }}
+              whileHover={{ 
+                scale: 1.05, 
+                backgroundColor: "rgba(109, 40, 217, 0.05)",
+                borderColor: "rgba(109, 40, 217, 0.2)"
+              }}
+              className="aspect-[3/2] rounded-2xl bg-accent-muted border border-white/5 flex items-center justify-center p-6 grayscale hover:grayscale-0 opacity-40 hover:opacity-100 transition-all duration-500 cursor-pointer group relative"
+            >
+              {/* Parlama Efekti */}
+              <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl bg-primary/10 -z-10" />
+              
+              <div className="relative w-full h-full">
+                <Image
+                  src={`/logos/${num}.png`}
+                  alt={`Partner Logo ${num}`}
+                  fill
+                  className="object-contain transition-transform duration-500 group-hover:scale-110"
+                />
+              </div>
+            </motion.div>
           ))}
         </div>
-      </section>
+      </div>
 
-      {/* ── Marquee Section ────────────────────────────────────────────────── */}
-      <ReferencesMarquee />
-    </main>
+      <LetsWorkSection />
+    </div>
   );
 }
